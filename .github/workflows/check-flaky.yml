@@ -30,7 +30,7 @@ jobs:
 
     - name: Run NonDex to confirm flaky test
       run: |
-        mvn edu.illinois:nondex-maven-plugin:2.1.1:nondex -Dtest=com.google.cloud.teleport.bigtable.CassandraRowMapperFnTest#testListColumn
+        mvn -pl . edu.illinois:nondex-maven-plugin:2.1.1:nondex -Dtest=com.google.cloud.teleport.bigtable.CassandraRowMapperFnTest#testListColumn
 
     - name: Save NonDex logs
       uses: actions/upload-artifact@v2
