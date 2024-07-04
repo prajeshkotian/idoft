@@ -24,14 +24,9 @@ jobs:
         java-version: '11'
 
     - name: Install Maven
-      uses: actions/setup-java@v2
-      with:
-        distribution: 'adopt'
-        java-version: '11'
-
-    - name: Install NonDex plugin
       run: |
-        mvn edu.illinois:nondex-maven-plugin:2.1.1:setup
+        sudo apt-get update
+        sudo apt-get install -y maven
 
     - name: Run NonDex to confirm flaky test
       run: |
