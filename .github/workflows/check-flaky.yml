@@ -32,7 +32,7 @@ jobs:
       run: |
         git clone https://github.com/GoogleCloudPlatform/DataflowTemplates.git
         cd DataflowTemplates
-        git checkout main # Ensure you are on the correct branch
+        git checkout 5094c7b39de511c9ed441d9fde28553a88f68e4b # Ensure you are on the correct branch
         mvn clean install -DskipTests -pl . -am
 
     - name: Run mvn to check tests without non-dex
