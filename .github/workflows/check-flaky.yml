@@ -28,12 +28,17 @@ jobs:
         sudo apt-get update
         sudo apt-get install -y maven
 
-    - name: Clone DataflowTemplates repository
+    - name: Clone DataflowTemplates repository and install dependencies
       run: |
         git clone https://github.com/GoogleCloudPlatform/DataflowTemplates.git
         cd DataflowTemplates
         git checkout main # Ensure you are on the correct branch
         mvn clean install -DskipTests -pl . -am
+
+    - name: Run mvn to check tests without non-dex
+      working-directory: DataflowTemplates
+      run: |
+        mvn -pl . test -Dtest=com.google.cloud.teleport.bigtable.CassandraRowMapperFnTest#testListColumn
 
     - name: Run NonDex to confirm flaky test
       working-directory: DataflowTemplates
